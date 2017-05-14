@@ -1,0 +1,24 @@
+---
+title: Experience
+layout: page
+permalink: /experience/
+---
+<p>Below are descriptions of some cool internship and project experiences I've had. I'm going to be starting full time as a software engineer at <a href="https://opengov.com/">OpenGov</a> this August.</p>
+
+{% include experience.html color="#cc0000" title="PennCloud (CIS 505 Final Project, Spring 2017)" 
+						   description="I worked with 3 teammates to build a distributed Google Apps clone that provided:
+										<ul>
+											<li>User Authentication: users could register, log in and out, and change their passwords.</li>
+											<li>Storage: users could upload and download files, create folders, move and delete files etc.</li>
+											<li>Webmail: users could send/receive emails to/from other users in the system and send emails out of the system. This included implementation of a multithreaded smtp server.</li>
+										</ul>
+										(I was primarily responsible for implementing user accounts and authentication and the webmail service.) As a team, we also designed and implemented a distributed key-value store (modeled after Google's BigTable) from scratch to act as our backend. Technologies used: C/C++, Apache Thrift, HTML/CSS/JS." 
+%}
+
+{% include experience.html color="#0000cc" title="Full Stack Engineer, PADA" 
+						   description="Designed and implemented the front- and back-ends of a web portal with which Penn CIS graduate admissions officials could view and run analytics on aggregated data about past applicants to help them make better informed decisions about future candidates. I also worked with one other engineer to design a data-cleaning pipeline with which new data from Excel or csv files can be manually uploaded and integrated with the existing data. Technologies used: PHP, HTML/CSS/JS, JQuery, SQL."
+%}
+
+{% include experience.html color="#cc0000" title="Software Engineering Intern, Zynga" 
+						   description="I worked with a team of other backend engineers to support client- and server-authoritative web/mobile casino games. Among other things like fixing bugs and building/improving a bunch of internal tools, the coolest/highest impact thing I did was that I designed and implemented time- and space-efficient player engagement metrics tracking. I worked with one other engineer to implement the system, then with QA to debug and improve it. It shipped on my last day and is being used extensively (I've been told)."
+%}
