@@ -1,0 +1,45 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+greeting: Welcome to my home page!
+title_first: Jack
+title_second: Gindi
+style_title_first: "color:#cc0000;font-weight:300;"
+style_title_second: "color:#0000cc;font-weight:500"
+email: gindijeATgmailDOTcom
+description: > # this means to ignore newlines until "baseurl:"
+  Just some background about me.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+github_username:  gindij
+linkedin_username: jackegindi
+math_courses: ['Calculus (3 semesters)', 'Linear Algebra', 'Abstract Algebra (2 semesters)', 
+                'Real Analysis (2 semesters)', 'Complex Analysis', 'Discrete Mathematics', 
+                'Partial Differential Equations']
+cs_courses: ['Computer Architecture', 'Datastructures and Algorithms', 'Theory of Computation', 'Algorithms',
+              'Programming and Problem Solving (Graduate)', 'Networks and Security', 'Operating Systems',
+              'Databases and Info Systems', 'Software Foundations (Graduate course in PL)', 'Artificial Intelligence (Graduate)',
+              'Cryptography (Graduate)', 'Randomized Algorithms (Graduate)', 'Distributed Systems (Graduate)',
+              'Advanced Functional Programming (Graduate)']
+ta_courses: ['Calc I', 'Calc II', 'Programming Languages and Techniques I', 'Datastructures and Algorithms', 'Ideas in Mathematics']
+
+# Build settings
+markdown: kramdown
+theme: minima
+gems:
+  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock

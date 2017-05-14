@@ -1,0 +1,23 @@
+---
+layout: page
+title: Coursework
+permalink: /academics/
+---
+
+<style type="text/css">
+	a:hover {
+		cursor: pointer;
+	}
+</style>
+
+<p>These are some of the relevant/cool courses I had the privilege of taking and being a TA for during my time at Penn. (Click the heading to toggle the courses.)</p>
+
+{% include course-list.html subject="Math" id_pref="math" course_list=site.math_courses %}
+{% include course-list.html subject="CS" id_pref="cs" course_list=site.cs_courses %}
+{% include course-list.html subject="TA" id_pref="ta" course_list=site.ta_courses %}
+
+<script type="text/javascript">
+	function toggle(id_pref) {
+		$('#' + id_pref + '_courses').toggle(100);
+	}
+</script>

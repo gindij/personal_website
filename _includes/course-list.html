@@ -1,0 +1,4 @@
+<div style="padding-bottom: 1em">
+	<h3 onclick="toggle('{{ include.id_pref }}')"><a>{{ include.subject }} Courses</a></h3>
+	<div id='{{ include.id_pref }}_courses' style="display: none">{{ include.course_list | join: ', ' }}</div>
+</div>
