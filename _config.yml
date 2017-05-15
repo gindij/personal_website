@@ -20,6 +20,7 @@ style_title_first: "color:#cc0000;font-weight:300;"
 style_title_second: "color:#0000cc;font-weight:500"
 email: gindijeATgmailDOTcom
 home_pic: jg3.jpg
+background_pic: network1.png
 description: > # this means to ignore newlines until "baseurl:"
   Just some background about me.
 baseurl: "" # the subpath of your site, e.g. /blog
