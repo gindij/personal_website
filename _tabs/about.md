@@ -1,7 +1,7 @@
 ---
 title: About
 icon: fas fa-info
-order: 4
+order: 2
 ---
 
 My name is Jack Gindi. I currently work in New York as a quant developer in the [BlackRock](https://www.blackrock.com/us/individual) AI Labs.

@@ -1,7 +1,7 @@
 ---
 title: Fibonacci with difference equations
 date: 2020-10-13
-tags: [linear-algebra]     # TAG names should always be lowercase
+tags: [diff-eq]     # TAG names should always be lowercase
 use_math: true
 ---
 
