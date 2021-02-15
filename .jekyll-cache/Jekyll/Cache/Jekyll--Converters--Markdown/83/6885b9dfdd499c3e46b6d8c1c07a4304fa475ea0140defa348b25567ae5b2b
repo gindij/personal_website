@@ -1,0 +1,74 @@
+I"�<h2 id="introduction">Introduction</h2>
+
+<p>This post was inspired by some conversations with my brother about the QR matrix decomposition. I’m writing it mostly to better understand the idea myself, but hopefully some others will find it clear and useful too.</p>
+
+<p>Generally speaking, a matrix decomposition usually starts with a matrix $A$ and asks how we can decompose it into some other matrices that have convenient properties. These algorithms are often useful in making certain common matrix-related tasks, such as solving (potentially large) systems of linear equations quickly much more computationally efficient. You can find a long list of decompositions here, but in this post we’re going to talk about one particular decomposition (or factorization): the QR factorization.</p>
+
+<p>We’ll begin by showing why the decomposition comes in handy for solving linear equations. Once we’ve convinced ourselves that the decomposition is useful, we will then discuss how we go about finding the components that the decomposition finds for us.</p>
+
+<h2 id="what-the-qr-factorization-does">What the $QR$-factorization does</h2>
+
+<p>Simply put, the QR factorization algorithm takes as input a matrix A and outputs a pair of matrices, $Q$ and $R$, such that $Q$ is orthogonal and $R$ is upper triangular (which means that the elements of the matrix below the diagonal are all 0).</p>
+
+<p>Let’s suppose that we’re interested in solving a system of linear equations given compactly in matrix-vector notation by $Ax = b$, where $A \in \mathbf{R}^{n\times k}$, $x \in \mathbf{R}^k$, and $b \in \mathbf{R}^n$. We will suppose that $A$ is tall or square and that it has full column rank (its columns are an independent set). We will also assume that $b$ is in the range of $A$, so that a solution exists. The variable here is $x$; that is, we want to find $x_1, \dots, x_k$ that simultaneously satisfy all of the equations in the system.</p>
+
+<p>Now let’s magically decompose $A$ into the product of matrices $Q$ and $R$, where $Q$ is orthogonal and $R$ is upper triangular. Then we can rewrite the system we want to solve as $QRx = b$. We can solve the system in 3 steps:</p>
+<ol>
+  <li>Solve the system $Qz = b$ by left multiplying both sides by $Q^T$ (benefit of $Q$ being orthogonal).</li>
+  <li>Solve the system $Rx = z$. If you think about what it means for $R$ to be upper triangular, we can solve this part by first obtaining $x_k$ by
+\begin{equation}
+  x_k = \frac{z_k}{R_{kk}},
+\end{equation}
+then obtaining $x_{k-1}$ by
+\begin{equation}
+x_{k-1} = z_{k-1} - z_k\frac{R_{k-1,k}}{R_{kk}R_{k-1,k-1}},
+\end{equation}
+then obtaining $x_{k-2}$, and so on, until we’ve computed all of the $x_i$.</li>
+</ol>
+
+<p>This turns out to be much more efficient than solving the system in the naive way (e.g., computing this and left multiplying the original system by it).</p>
+
+<p>The other great advantage of computing a factorization like the QR factorization is that it can be cached and reused! Suppose that instead of a single system, you want to solve 1000 systems, with with different right hand sides (e.g., $Ax = b_1$, $Ax = b_2$, …, $Ax = b_{1000}$. After computing the factorization once,  you can reuse it to make all 1000 solves more efficient! In some sense, you can amortize the cost of the factorization over a bunch of reuses. In real applications that I’ve been a part of developing, using matrix decompositions in this way has resulted in noticeable and impactful speedups.</p>
+
+<h2 id="finding-q-and-r">Finding $Q$ and $R$</h2>
+<p>So how do we find $Q$ and $R$?</p>
+
+<p>There are a few ways to compute Q and R, but in this post I want to walk through the most intuitive of them: the Gram-Schmidt algorithm (GS).</p>
+
+<p>We will describe GS when the input is a linearly independent set of $n$-vectors $a_1,\dots,a_k$ (this implies $k \leq n$). The general idea of the algorithm is that at the $i$th step we construct a vector q_i using $a_i$ as a starting point and removing from it everything that $a_i$ shares with the vectors we’ve already computed in prior steps, i.e., $q_1$ through $q_{i-1}$. By construction, $q_i$ doesn’t have anything in common with any of the vectors computed before it, so the collection $q_1,\dots,q_k$ are orthogonal. If we divide each vector by its length at each step, the orthogonal collection becomes orthonormal. The vectors $q_i$ become the columns of $Q$.</p>
+
+<p>In order to compute $R$, we need to make the idea of “removing from it everything that $a_i$ shares with the vectors we’ve already computed in prior steps” more precise. To this end, suppose we are part of the way through the algorithm and as we’re preparing for the $i$th step, we have the vector a_i that we need to incorporate into our output and the orthonormal collection $q_1,\dots,q_{i-1}$ that we’ve built up so far. For some $1 \leq k \leq i-1$, let $v_k = (q_k^Ta_i)q_k$. If we subtract $v_k$ from $a_i$, let’s see what the result “has in common” with $q_k$ by taking the inner product:</p>
+
+<div>
+\begin{align*}
+  (a_i - v_k)^Tq_k &amp;= (a_i - (q_k^Ta_i)q_k)^T q_k \\\\
+  &amp;= a_i^Tq_k - q_k^Ta_i \\\\
+  &amp;= 0
+\end{align*}
+</div>
+
+<p>This means $a_i - v_k$ has nothing in common with, or in math parlance, is orthogonal to, $q_k$! Thus, to make $q_i$ orthogonal to all of the $q_k$, we just set $q_i = a_i - v_1 - v_2 - \dots - v_{i-1}$. The GS algorithm can thus be stated compactly:</p>
+
+<p>For $i = 1,\dots,k$, let $p_i = a_i - v_1 - \dots - v_{i-1}$. Then define $q_i = p_i / |p_i|$. When you’ve cycled through all values of $i$, return the collection $q_1,\dots,q_k$.</p>
+
+<p>With this in hand, we can now define the entries of $R$. If $p_i = a_i - v_1 - \dots - v_{i-1}$, then we can isolate $a_i$ and obtain</p>
+
+<div>
+\begin{align*}
+  a_i &amp;= \|p_i\|p_i + v_1 + \dots + v_{i-1} \\\\
+  &amp;= \|p_i\|p_i + (q_1^Ta_i)q_1 + \dots + (q_{i-1}^Ta_i)q_{i-1}.
+\end{align*}
+</div>
+
+<p>We will choose $R_{ij} = q_j^Ta_i$ for $i&lt;j$, $R_{ii} = |p_i|$ for $i=j$, and $R_{ij} = 0$ for $i&gt;j$; in essence, we’re just picking our entries of $R$ right out of the expression for $a_i$ in terms of the $q_i$.</p>
+
+<p>By defining $Q$ and $R$ as such, we have $A = QR$, as we wanted.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>QR factorization is very useful without being overly abstract. Ultimately, the insight that makes it possible is very intuitive (even though many symbols were harmed in the writing of this post). The method described above is by no means the only way to compute $QR$-factorization. I may go through some of the others in future posts.</p>
+
+<p>An algorithm like the one we considered in this post is one of the most satisfying things about working with and studying mathematics; one moment, you’re thinking about linear independence and orthogonality, and the next you’ve got a very useful, practical algorithm.</p>
+
+<p>(Note The exposition of the algorithm in this post is inspired by that of <a href="http://vmls-book.stanford.edu">this book</a> by Boyd and Vandenberghe)</p>
+:ET
