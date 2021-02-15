@@ -1,5 +1,5 @@
 ---
-title: Anniversary Math
+title: Anniversary math
 date: 2020-11-27
 tags: [misc]     # TAG names should always be lowercase
 ---
