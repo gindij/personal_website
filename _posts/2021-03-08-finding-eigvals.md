@@ -1,6 +1,6 @@
 ---
 title: Finding eigenvalues
-date: 2021-03-02
+date: 2021-03-08
 tags: [linear-algebra]     # TAG names should always be lowercase
 use_math: true
 ---
