@@ -30,7 +30,8 @@ $v$ is an eigenvector of $A$, with corresponding eigenvalue $\lambda$ if we have
 <div>
 $$Av = \lambda v.$$
 </div>
-For the rest of the post, we will assume we're dealing with a symmetric matrix.
+For the rest of the post, we will assume we're dealing with a symmetric
+positive definite matrix.
 
 ## A helpful characterization
 Our first step will be to develop a helpful characterization of eigenvalues. To do
@@ -42,15 +43,15 @@ We are essentially trying to find a scalar that is the closest approximation we
 can find to an eigenvalue corresponding to the vector $x$, _i.e._ an $\alpha$ such
 that $Ax \approx \alpha x$. We can easily solve this minimization problem by
 setting the derivative of the objective (w.r.t. $\alpha$) to 0 and solving for $\alpha$.
-Carrying this out, as a function of and $x$, we get:
+Carrying this out, as a function of $x$, we get:
 <div>
 $$
   \alpha(x) = \frac{x^TAx}{x^Tx}
 $$
 </div>
 
-Let's see what happens if we maximize $\alpha(x)$ over $x$. Using the vector
-analog of the quotient rule for taking derivatives, we have
+What we are interested in are the critical points of $\alpha(x)$ as a function of $x$.
+Using the vector analog of the quotient rule for taking derivatives, we have
 <div>
 \begin{align*}
   \nabla_x \alpha(A, x) &= \frac{2Ax}{x^Tx} - \frac{(2x)(x^TAx)}{(x^Tx)^2} \\\\
@@ -59,9 +60,9 @@ analog of the quotient rule for taking derivatives, we have
 \end{align*}
 </div>
 
-Suppose we found a vector $v$ such that $\nabla \alpha(v) = 0$. For that $v$,
+Suppose $v$ is a critical point of $\alpha$, _i.e._ $\nabla \alpha(v) = 0$. For that $v$,
 we would have $Av = \alpha(v)v$. That is, $v$ is an eigenvector of $A$, with eigenvalue
-$\alpha(v)$. Conversely, if $v$ is an eigenvalue of $A$ with corresponding
+$\alpha(v)$. Conversely, if $v$ is an eigenvector of $A$ with corresponding
 eigenvalue $\lambda$, then we have $r(v) = \lambda \frac{x^Tx}{x^Tx} = \lambda$.
 We've now shown that the vectors $v$ that make the derivative 0 are _exactly_ the
 eigenvectors of $A$. For each of those eigenvectors, $\alpha$ produces the corresponding
@@ -70,12 +71,12 @@ eigenvalue.
 This characterization of eigenvalues and eigenvectors is important because it gives
 us an iterative way to think about these mathematical objects with a definition that is more amenable
 to computation. The function $\alpha$ is important enough that is has a name, the
-_Rayleigh Quotient_, and it is crucial to our development of the algorithms below.
+_Rayleigh quotient_, and it is crucial to our development of the algorithms below.
 
 Thus far, given an arbitrary vector, we've found a way to come up with an
 eigenvalue-like scalar that corresponds to it. Intuitively order to find a bona
-fide eigenvalue of $A$, we have to iteratively nudge our initial vector toward
-eigenvector-hood. As our initial guess tends toward an eigenvector $v$, $\alpha(v)$
+fide eigenvalue of $A$, we have to iteratively nudge our initial eigenvector estimate
+toward eigenvector-hood. As our initial guess tends toward an eigenvector $v$, $\alpha(v)$
 tends toward an eigenvalue of $A$.
 
 ## Power iteration
@@ -118,7 +119,7 @@ To show that the sequences of iterates converge in the way that we claimed, we
 just need to show that the sequence $v_i$ converges to an eigenvector of $A$ (
 because we've already shown that given an eigenvector, $\alpha$ produces an eigenvalue).
 
-Let's say that $\\{q_i\\}$, $i = 1,\dots,m$, are an orthogonal basis eigenvectors of $A$
+Let's say that $\\{q_i\\}$, $i = 1,\dots,m$, make up an orthogonal basis of eigenvectors of $A$
 corresponding to the eigenvalues $\lambda_i$ (this set exists because $A$ is symmetric).
 We can also assume, without altering the proof, that $|\lambda_1| > |\lambda_2| \geq \dots \geq |\lambda_m|$.
 Because $v_k = c_kA^kv_0$ for some sequence of constants $c_k$ (because of the
@@ -131,8 +132,8 @@ normalization at each step), we can use the expansion of $v_k$ in the basis $\\{
     &= c\lambda_1^k(a_1q_1 + a_2(\lambda_2/\lambda_1)^kq_2 + \dots a_m(\lambda_m/\lambda_1)^kq_m)
 \end{align*}
 </div>
-Because $\lambda_1$ is greater than all other eigenvalues, as $k \to \infty$, the
-$m-1$ terms in the parentheses in the last line go to zero, so we have
+Because $\lambda_1$ is greater than all other eigenvalues, as $k \to \infty$, all
+but the first of the terms in the parentheses in the last line go to zero, so we have
 $v_k \to c_ka_1\lambda_1^kq_1$, which is a scalar multiple of $q_1$, the eigenvector
 of $A$ corresponding to the largest eigenvalue. (We do not need to worry about
 the sign of the constants; the important thing is that the one-dimensional
@@ -149,7 +150,7 @@ these issues, which we'll discuss next.
 ## Inverse iteration
 Let's see if we can find a better, more reliable way to find these eigenvectors. Suppose
 that $\mu$ is a scalar that is _not_ an eigenvalue of $A$ and let $v$ be an eigenvector
-of $A$ with associated eigenvalue $\lambda$. We can show that $v$ is also an eigenvalue
+of $A$ with associated eigenvalue $\lambda$. We can show that $v$ is also an eigenvector
 of $(A - \mu I)^{-1}$ by
 <div>
 \begin{align*}
@@ -199,10 +200,10 @@ and this discussion is the final leg of our journey.
 
 ## Rayleigh quotient iteration
 We can put the two algorithms together by repeating two operations:
-1. Refine our estimate of $\lambda$ by computing the Rayleigh quotient using
-   our latest eigenvector estimate.
-2. Passing our latest eigenvalue estimate computed in (1) to the Rayleigh quotient
-   to refine our eigenvalue estimate.
+1. Use an inverse iteration step to refine our estimate of the eigenvector using
+the latest estimate of $\lambda$.
+2. Using Rayleigh quotient to turn the refined eigenvector estimate into a refined
+eigenvalue estimate.
 
 As the eigenvalue estimate $\mu$ becomes better, the speed of convergence of inverse
 iteration increases, so that this natural combination yields our best algorithm yet.
@@ -228,11 +229,11 @@ end
 ```
 
 ## Conclusion
-In this post, we went a couple of different algorithms that help us find eigenvalues
-and eigenvectors. While we typically learn that eigenvalues and eigenvectors should be thought
+In this post, we went through a couple of different algorithms that help us find eigenvalues
+and eigenvectors. While we typically first learn that eigenvalues and eigenvectors should be thought
 about in the context of characteristic polynomials and determinants, it turns out that for both
 theoretical (due to Abel) and computational (ill-conditioning of root-finding algorithms)
-reasons, an iterative approach is actually _required_ for finding them in general.
+reasons, an iterative approach is actually _required_ for finding them in practice.
 
 In addition to wanting to cement my understanding of these algorithms as well as possible
 before moving to the next lecture in the textbook, I thought this was a cool case of
