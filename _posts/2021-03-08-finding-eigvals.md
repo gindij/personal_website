@@ -23,10 +23,18 @@ definite matrix $A$.
 ## Review of eigenvalues and eigenvectors
 Eigenvalues and eigenvectors are central in applied linear algebra. They have
 applications across machine learning, communication systems, mechanical engineering,
-optimization, and many other disciplines. In essence, an eigenvector $v$ of a matrix
-$A$ is a vector that is exclusively stretched (not rotated) when acted upon by $A$.
-An eigenvalue $\lambda$ of $A$ that corresponds to $v$ is the stretch factor. Formally,
-$v$ is an eigenvector of $A$, with corresponding eigenvalue $\lambda$ if we have
+optimization, and many other disciplines. One particularly important application
+of eigenvalues to our everyday lives is search engines! In fact, Google's PageRank
+algorithm (or at least the initial algorithm), is all based on eigenthings. For a
+great explanation of the original conception of using PageRank to organize the internet,
+check out [the original paper](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=1552E98D8F3A3CDBC9C7BD9E39591000?doi=10.1.1.38.5427&rep=rep1&type=pdf)
+by Sergey Brin and Larry Page. As my good friend Ben reminded me "Eigenvectors
+power our internet!"
+
+In essence, an eigenvector $v$ of a matrix $A$ is a vector that is exclusively
+stretched (not rotated) when acted upon by $A$. An eigenvalue $\lambda$ of $A$
+that corresponds to $v$ is the stretch factor. Formally, $v$ is an eigenvector
+of $A$, with corresponding eigenvalue $\lambda$ if we have
 <div>
 $$Av = \lambda v.$$
 </div>
