@@ -35,7 +35,7 @@ very important distinction. We believe that the linear model might be _useful_, 
 necessarily that it is _correct_ or _true_.
 
 (Another way of thinking about our equation, or model, is that it says once we know
-the the parameter $\theta$ and the particular number of bedrooms $b_0$, the randomness
+the parameter $\theta$ and the particular number of bedrooms $b_0$, the randomness
 has been confined to the variation of prices around a known mean: $\theta b_0$.)
 
 ## Fitting the parameters
