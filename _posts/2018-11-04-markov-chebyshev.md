@@ -1,7 +1,7 @@
 ---
 title: Probabilistic ballparking
 date: 2018-11-4
-tags: [stats]     # TAG names should always be lowercase
+tags: [statistics]     # TAG names should always be lowercase
 use_math: true
 ---
 
