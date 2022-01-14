@@ -106,6 +106,16 @@ If the word under evaluation contains an "s" at position 1, the word
 would accrue a credit of 0.06 for the "s". The sum of these credits across the 5 positions
 determines the word score. At each point, I select the valid word with the highest score.
 
+This scoring system has (at least) one obvious weakness! If the target word has letters in certain positions that are very
+uncommon for that position, the algorithm will pick other words first and possibly run out of guesses. Trying to figure out
+how to remedy this would make the algorithm more robust, but I haven't given it enough thought as of this writing.
+
+## How well does the solver work?
+With an allowance of 6 guesses, on a random sample of 5k target words, my solver successfully found the target word about 90% of the time
+in an average of 5 guesses.
+Increasing the allowance to 9 guesses, it succeeds 98.5% of the time. With 15 guesses, it succeeds on all 5k examples. In the instances
+where it fails with 6 guesses, there are, on average, about 7 valid choices left. That's pretty good!
+
 ## What is the best word to start with?
 Before trying to answer this question, it should be noted that "best" in this context
 depends on your algorithm. Different scoring methodologies, for example, would imply
