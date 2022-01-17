@@ -183,3 +183,6 @@ I used soon, so feel free to have a look at it if you're interested
 in seeing what the actual implementation looks like.
 Even though the insights we arrived at were pretty intuitive, I hope that
 you enjoyed putting a little bit of rigor to it. Happy Wordling!
+
+
+Edit (2022-01-17): I've posted the code [here](https://github.com/gindij/wordle).
