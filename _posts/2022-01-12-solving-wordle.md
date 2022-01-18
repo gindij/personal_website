@@ -185,4 +185,7 @@ Even though the insights we arrived at were pretty intuitive, I hope that
 you enjoyed putting a little bit of rigor to it. Happy Wordling!
 
 
-Edit (2022-01-17): I've posted the code [here](https://github.com/gindij/wordle).
+Edit (2022-01-17): I've posted the code [here](https://github.com/gindij/wordle). In response to some feedback I received about the post,
+I also changed the word-scoring algorithm to encourage helpful
+exploration, rather than only using words that satisfy the constraints
+we've accumulated information about.
