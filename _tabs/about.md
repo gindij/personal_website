@@ -11,19 +11,16 @@ find my LinkedIn profile [here](https://www.linkedin.com/in/jackegindi/).
 Prior to LinkedIn, I worked at [Goldman
 Sachs](https://www.goldmansachs.com) as a quant
 strategist (Strat) in Goldman Sachs Asset Management
-([GSAM](https://www.gsam.com/)).
-
-Before Goldman, I worked as a quant developer/research
-engineer in the [BlackRock AI Labs](https://www.blackrock.com/corporate/ai#open-source).
-Over my three years there, I worked on projects in machine learning and
+([GSAM](https://www.gsam.com/)). Before that I worked as a
+quant developer/research engineer in the
+[BlackRock AI Labs](https://www.blackrock.com/corporate/ai#open-source).
+During my time there, I worked on projects in machine learning and
 optimization, with applications to optimal wealth
 management in retirement (decumulation), tax-aware
-portfolio construction, and securities lending. Before
-working at BlackRock, I was a data platform engineer at
-a startup called [OpenGov](https://opengov.com).
+portfolio construction, and securities lending.
 
-I completed my master's degree in Computer Science at
-UPenn in May 2017 after completing a bachelor's in
+I completed my Master's degree in Computer Science at
+UPenn in May 2017 after completing a Bachelor's in
 Mathematics and Computer Science in May 2016 (also from
 UPenn). I'm currently pursuing a part-time MS in Scientific
 Computing at NYU.

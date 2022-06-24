@@ -5,25 +5,30 @@ icon: fas fa-archive
 order: 3
 ---
 
-Since having an opportunity to explore it deeply in college, I've always enjoyed
-my studies in across math and computer science. Some of the interesting courses
-I took during college include:
-* Abstract algebra (2 semesters), real (2 semesters) and complex analysis
-* Algorithms, advanced algorithms (randomized)
-* Advanced (functional) programming in Haskell, (theory of) programming languages
-* Distributed systems, operating systems
-* Cryptography
-* Programming and problem solving
-* Artificial intelligence
-* Engineering entrepreneurship
+During my time at UPenn, I completed a double major in
+Mathematics and Computer Science (2016) and a Master's degree in
+Computer Science (2017). I am currently pursuing a Master's degree in
+Scientific Computing at the Courant Institute (NYU, 2021 -- present).
 
-Since leaving school, I've continued studying interesting and growing areas of CS/math,
-including having taken courses:
+Courses of interest that I've taken include:
+* Numerical Methods 1 (NYU)
+* Machine Learning (NYU)
+* Advanced Randomized Algorithms (UPenn)
+* Advanced Programming in Haskell (UPenn)
+* Artificial Intelligence (UPenn)
+* Distributed Systems (UPenn)
+* A bunch of math courses
+
+In addition to my formal academic studies, I've continued my education on my own
+time:
 * [Probability theory](https://www.youtube.com/watch?v=KbB0FjPg0mw&list=PL2SOU6wwxB0uwwH80KTQ6ht66KWxbzTIo) (Harvard, YouTube), statistical inference (Columbia, in-person)
-* [Reinforcement learning](https://www.coursera.org/specializations/reinforcement-learning) (University of Alberta, Coursera)
+* Statistical Inference (Columbia, in-person)
 * [Convex optimization](https://web.stanford.edu/class/ee364a/) (Stanford, in-person)
+* [Reinforcement learning](https://www.coursera.org/specializations/reinforcement-learning) (University of Alberta, Coursera)
+* [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning)
 
-During the course of my studies, I've also realized how important and fundamental
-linear algebra is, so I've gone through a couple of textbooks to cement my understanding
-of the subject, on both the theoretical ([Linear Algebra Done Right](https://zhangyk8.github.io/teaching/file_spring2018/linear_algebra_done_right.pdf), [Intro to Applied Linear Algebra](http://vmls-book.stanford.edu/))
-and numerical ([Numerical Linear Algebra](https://www.amazon.com/Numerical-Linear-Algebra-Lloyd-Trefethen/dp/0898713617)) sides.
+Since leaving school, I've also revisited linear algebra a few times from a few different angles,
+and would recommend the following resources to anyone interested in the subject:
+* [Linear Algebra Done Right](https://zhangyk8.github.io/teaching/file_spring2018/linear_algebra_done_right.pdf)
+* [Intro to Applied Linear Algebra](http://vmls-book.stanford.edu/)
+* [Numerical Linear Algebra](https://www.amazon.com/Numerical-Linear-Algebra-Lloyd-Trefethen/dp/0898713617)
