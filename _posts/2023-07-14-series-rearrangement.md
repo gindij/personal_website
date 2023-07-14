@@ -15,7 +15,7 @@ kind (natural numbers, integers, rationals, reals, complex), then -- now hold on
 \end{align*}
 </div>
 
-Earth-shattering -- I know. As some of you may know, I find infinity fascinating. In this post,
+Earth-shattering -- I know. As some of you are likely already aware, I find infinity fascinating. In this post,
 I want to briefly discuss how infinity can mess with some of our most basic assumptions
 about the nature of one of our most basic arithmetic operations. Without further ado, let's dive
 in.
@@ -39,9 +39,10 @@ or
 But what -- you might ask -- is so interesting about these sums? Don't an infinite number of numbers
 added together have to add up to $\infty$?
 
-(Before answering that question, it is worth considering what mathmeticians even mean when they ask
+(Mathmatical aside -- feel free to skip:
+Before answering that question, it is worth considering what mathmeticians even mean when they ask
 about the sum of an infinite number of terms. We could never actually add up infinitely many terms,
-so instead, the ``sum" of an infinite series is the limiting value of the sequence of the series'
+so instead, the "sum" of an infinite series is the limiting value of the sequence of the series'
 partial sums. That is for the second series, we want to know the limiting value of the sequence
 $1, 1 + \frac{1}{2}, 1 + \frac{1}{2} + \frac{1}{4}, \dots$.)
 
