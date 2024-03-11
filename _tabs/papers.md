@@ -21,3 +21,4 @@ are worthwhile:
 | [Modularity and community structure in networks](https://www.pnas.org/doi/pdf/10.1073/pnas.0601602103) | M.E.J. Newman | 2006 | Elegant spectral method for community detection. |
 | [Scalable Hierarchical Agglomerative Clustering](https://dl.acm.org/doi/pdf/10.1145/3447548.3467404) | Monath et al, Google | 2021 | A scalable, level-based approach to hierarchical agglomerative clustering. |
 | [Pearl: A Production-Ready Reinforcement Learning Agent](https://arxiv.org/pdf/2312.03814.pdf) | Zhu et al, Meta | 2023 | This paper introduces Pearl, a modular reinforcement learning agent designed for production environments. |
+| [Discovering faster matrix multiplication algorithms with reinforcement learning](https://www.nature.com/articles/s41586-022-05172-4) | Fawzi et al, DeepMind | 2022 | This paper introduces AlphaTensor, an RL-based algorithm to find faster ways to multiply matrices. |
