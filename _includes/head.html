@@ -81,4 +81,9 @@
     {% include _mathjax_support.html %}
   {% endif %}
 
+  {% raw %}
+    {% if jekyll.environment == 'production' and site.google_analytics %}
+      {% include analytics.html %}
+    {% endif %}
+  {% endraw %}
 </head>
