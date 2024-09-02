@@ -1,6 +1,7 @@
 # The Site Configuration
 
-google_analytics: "G-BEZGCDXPKZ"
+google_analytics:
+  id: "G-BEZGCDXPKZ"
 
 # Import the theme
 theme: jekyll-theme-chirpy
