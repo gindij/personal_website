@@ -1,8 +1,5 @@
 # The Site Configuration
 
-google_analytics:
-  id: "G-BEZGCDXPKZ"
-
 # Import the theme
 theme: jekyll-theme-chirpy
 
@@ -20,7 +17,7 @@ timezone: America/New_York
 # --------------------------
 title: Jack Gindi                          # the main title
 
-tagline: math guy / programmer   # it will display as the sub-title
+tagline: math x code   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Passionate about the intersection between math and programming.
@@ -53,7 +50,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 # --------------------------
 
 google_analytics:
-  id: ''          # Fill with your Google Analytics ID
+  id: 'G-BEZGCDXPKZ'          # Fill with your Google Analytics ID
   pv:
     # The Google Analytics pageviews switch.
     # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
