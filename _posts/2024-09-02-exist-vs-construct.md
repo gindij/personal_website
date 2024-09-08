@@ -45,10 +45,18 @@ A graph is a collection of nodes connected to one another by edges. A _complete_
 
 <img src="complete.png" alt="drawing" width="550" height="400"/>
 
-An edge coloring is an assignment of colors from some set (e.g. {red, blue}). The question we care about here is: Given a complete graph with $n$ vertices ($K_n$) and an integer $r$ (where $r < n$), is it possible to color each edge either red or blue in such a way that no group of $r$ vertices ($K_r$) has monochromatic connecting edges?
+The question we care about here is: Given a complete graph with $n$ vertices ($K_n$) and an integer $r$ (where $r < n$), is it possible to color each edge either red or blue in such a way that no group of $r$ vertices ($K_r$) has monochromatic connecting edges?
 
 (Read that again if you need to.)
 
-More interesting than the proof itself (which produces a relationship between $n$ and $r$ for which such colorings exist) is the way the proof begins. We start by constructing a "random" graph where each edge is colored red or blue independently at random, and then make an argument about the probability that a coloring of the desired kind occurs.
+The proof begins by constructing a "random" graph where each edge is colored red or blue independently at random. Using the fact that the graph is random (in the edge-coloring sense) and skipping over some details, it turns out that if for a particular choice of $n$ and $r$,
+<div>
+$$
+\frac{n!}{r!(n-r)!} 2^{1 - r(r - 1) / 2} < 1,
+$$
+</div>
+then such an edge-coloring exists. In other words, given our initial question with some specific values of $n$ and $r$, you can determine if such an edge-coloring exists just by plugging those values into the left side of the inequality and seeing whether the result is smaller than 1. Note, however, that this plug-and-chug way of answering the question gives us _no information_ about _how_ to color the edges to see the actual coloring!
 
-One can imagine sitting down and drawing some small examples to try to gain an intuition for this problem. Maybe you decide that you'll draw a few examples for $n=5$ vertices (ten edges) or $n = 10$ vertices (45 edges). But then you realize that you need to test different values of $r$ also, and before you know it, it just becomes too difficult to gain intuition by proceeding directly. In this and many other cases, the probabilistic method comes to our aid and allows us to sidestep the hard problem of construction, and trade it in for the often easier problem of existence.
+Here, again, we have some clever way to answer the existence question while still being at square zero in terms of how we might go about construction.
+
+For this and other combinatorial problems, one can imagine sitting down and drawing some small examples to try to gain an intuition for what a valid coloring might look like. Maybe you draw a few examples for $n=5$ vertices (ten edges) or $n = 10$ vertices (45 edges). Then you pick a few values of $r$ and realize (if you're lucky and persistent) that a few values of $r$ work while others don't, and you start to feel like getting intuition for this problem from examples might be more difficult than you thought. The probabilistic method allows us to sidestep the problem of construction and instead prove existence in a way that highlights the surprising power of abstract reasoning in tackling what are otherwise mind-crushingly complex combinatorial problems.
