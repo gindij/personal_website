@@ -84,7 +84,7 @@ While the log-odds are a convenient choice for range mapping, they are not the o
 Another, perhaps more principled way to arrive at the sigmoid function is to make an assumption about the conditional distribution of the target $Y$ given the input $X$. If we assume that
 <div>
 $$
-Y|x \sim \text{Bern}(p(\beta^top x)),
+Y|x \sim \text{Bern}(p(\beta^\top x)),
 $$
 </div>
 i.e., that given a value for $x$ and parameters $\beta$, that $Y$ is a Bernoulli random variable with success probability $p(\beta^\top x)$, then we can write the probability mass function for this distribution
