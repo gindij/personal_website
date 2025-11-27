@@ -78,21 +78,21 @@ $$
 
 This derivation is intuitive and visually satisfying. It solves the "unbounded output" problem by mapping the infinite range of a linear model to the unit interval of a probability. However, a skeptical reader might still ask: "Why did we choose to model the log-odds specifically?"
 
-While the log-odds are a convenient choice for range mapping, they are not the only choice. We could have chosen other functions to map $(-\infty, \infty)$ to $[0,1]$ (such as the Probit function, which uses the cumulative distribution of a Gaussian). To understand why the sigmoid is not just a convenient choice, but the mathematically "natural" choice, we need to dig a layer deeper into statistical theory.
+While the log-odds are a convenient choice for range mapping, they are not the only choice. We could have chosen other functions to map $(-\infty, \infty)$ to $[0,1]$ (such as the cumulative distribution of a Gaussian). To understand why the sigmoid is not just a convenient choice, but the mathematically "natural" choice, we need to dig a bit deeper.
 
 # The exponential family
-Another, perhaps deeper way to arrive at the sigmoid function is to make an assumption about the conditional distribution of the target $Y$ given the input $X$. If we assume that
+Another, perhaps more principled way to arrive at the sigmoid function is to make an assumption about the conditional distribution of the target $Y$ given the input $X$. If we assume that
 <div>
 $$
-Y|x \sim \text{Bern}(p(x)),
+Y|x \sim \text{Bern}(p(\beta^top x)),
 $$
 </div>
-i.e., that given a value for $x$, that $Y$ is a Bernoulli random variable with success probability $p(x)$ (note the dependence on $x$), then we can write the probability mass function for this distribution
+i.e., that given a value for $x$ and parameters $\beta$, that $Y$ is a Bernoulli random variable with success probability $p(\beta^\top x)$, then we can write the probability mass function for this distribution
 <div>
 $$
 P(Y|X=x; p(\beta^\top x)) = \begin{cases}
-    p(x) &\text{ if } Y=1 \\
-    1 - p(x) &\text{ if } Y=0
+    p(\beta^\top x) &\text{ if } Y=1 \\
+    1 - p(\beta^\top x) &\text{ if } Y=0
 \end{cases}
 $$
 </div>
@@ -120,9 +120,9 @@ P(Y=y|X=x; p) &= p^y (1 - p)^{(1-y)} \\
 
 This is great! But why go through this derivation?
 
-It reveals that the log-odds are the **natural parameter** of the Bernoulli distribution. By setting our linear predictor $\beta^\top x$ equal to this natural parameter, we are using what is called the **canonical link function**. This specific choice is mathematically "safe": it guarantees that the log-likelihood function with respect to the parameters $\beta$ is concave. In practical terms, this means our loss function has no local optima (at which we can get stuck), making the model robust and simpler to train. To see the model we get for $p$ when we model the log odds as $\beta^\top x$, we... just have a look at the earlier section on range mapping.
+It reveals that the log-odds are what is known as the **natural parameter** of the Bernoulli distribution. By setting our linear predictor $\beta^\top x$ equal to this natural parameter, we are using what is called the **canonical link function**. This specific choice is mathematically "safe": it guarantees that the log-likelihood function with respect to the parameters $\beta$ is concave. In practical terms, this makes the likelihood much easier to maximize, since ther are no local optima to get stuck at. To see the model we get for $p$ when we model the log odds as $\beta^\top x$, we... just have a look at the earlier section on range mapping.
 
 # Conclusion
-In this post, we've seen two ways of motivating the use of the sigmoid function in logistic regression. The first is easier to grasp and more intuitive, but the second gives a glimpse of the mathematical depth that is often skipped over when engineers study ML for the first time. I hope you enjoyed!
+In this post, we've seen two ways of motivating the use of the sigmoid function in logistic regression. The first is easier to grasp and more intuitive, but the second gives a glimpse of the mathematical depth that is often skipped over when engineers study ML for the first time. I hope you enjoyed, and happy Thanksgiving!
 
 
