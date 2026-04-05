@@ -7,7 +7,8 @@ order: 2
 My name is Jack Gindi. I'm an ML engineer who loves working at the intersection
 of programming and mathematics.
 
-I'm currently a senior ML engineer at [LinkedIn](https://www.linkedin.com) working
+I'm currently a senior ML engineer at Meta working on ads ranking models.
+Prior to that, I worked at LinkedIn, focusing on
 on preventing abusers and other bad actors from coming onto the platform. You can
 find my LinkedIn profile [here](https://www.linkedin.com/in/jackegindi/).
 
